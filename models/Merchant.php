@@ -1,67 +1,100 @@
 <?php
 
-class Merchant
+class Merchant extends BaseClass
 {
-    private $_csvFields;
 
+    private $_dataFile;
 
+    public function __construct()
+    {
+        $this->_dataFile = NULL;
+    }
 
     /**
-     * @Desc    Open a file and construct an arrya of objects
-     * @param   string $file
-     * @param   string $mode
-     * @return  mixed FALSE on error, or a file handle
+     * @desc set the location of the datafile
+     * @param string $f
      */
-    public function getDataFromFile($file = 'data.csv', $mode = 'r')
+    public function setDataFile($f)
+    {
+        $this->_dataFile = $f;
+    }
+
+    /**
+     * @desc The job runner. When passed a merchant ID, it will grab
+     *       all the data it needs and print to the screen
+     */
+    public function printReport()
     {
         $ret = FALSE;
 
-        if ( ($fh = fopen($file, $mode)) )
-        {
-            $ret = array();
+        // Make this global, otherwise we can't access it
+        global $argv;
 
-            //@todo Run a check to see if it's actually a CSV file.
-            while ( ($row = fgetcsv($fh, 1000, ";")) )
-            {
-                $o          = new stdClass;
-                $o->id      = $row[0];
-                $o->date    = $row[1];
-                $o->value   = $row[2];
-                array_push($ret, $o);
-            }
-            
+        // Check we've got a merchant ID
+        if ( !isset($argv[1]) OR $argv[1] == '--help' )
+        {
+            $this->_eHand->logError('Merchant ID not passed');
+            $this->_eHand->showUsage();
         }
         else {
-            errorHandler::logError('Unable to open '. $file);
+            if ($trans = $this->getTransactions($argv[1]))
+            {
+                $display = new display();
+
+                // Print a header
+                $display->printHeader();
+
+                // For each transaction..
+                foreach($trans as $row)
+                {
+                    $display->printRow($row);
+                }
+                $display->printFooter();
+                $ret = TRUE;
+            }
+
         }
 
         return $ret;
-    }
 
-    public function
+    }
 
     /**
      * @desc    Get all the transaction based on a given ID
      */
-    public function getTransactions()
+    public function getTransactions($id)
     {
         $ret = FALSE;
-        if ( ($file_array = $this->getDataFromFile()) )
+        if ( 
+                $file_array = $this->_transTable->getDataFromFile(
+                    $this->_dataFile
+                )
+            )
         {
             $ret = array();
-            
+
+            $header = FALSE;
             // If the ID matches, let's grab them!
             foreach ($file_array AS $row)
             {
-                if ($id == $row->id)
+                if ($id == $row->id OR $id == 'all')
                 {
+                    // If all, we don't want the head row
+                    if ($id == 'all' AND $header == FALSE)
+                    {
+                        $header = TRUE;
+                        continue;
+                    }
+                    // Do a little conversion
+                    $row->value =  $this->_converter->convert($row->value);
                     array_push($ret, $row);
                 }
             }
         }
 
         return $ret;
-
         
     }
+
+
 }

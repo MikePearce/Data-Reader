@@ -13,6 +13,7 @@ class CurrencyWebservice
      */
     public function getExchangeRate($currency)
     {
-
+        // Return random float
+        return (1+lcg_value()*(abs(2-1)));
     }
 }
