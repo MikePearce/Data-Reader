@@ -46,7 +46,7 @@ class CurrencyConverter
      * @desc for injection
      * @param CurrencyWebservice $o
      */
-    public function setCurrencyWebService(CurrencyWebservice $o)
+    public function setCurrencyWebService($o)
     {
         $this->_currWebService = $o;
     }

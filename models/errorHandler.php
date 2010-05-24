@@ -6,7 +6,7 @@
  * @author  Mike Pearce <mike@mikepearce.net>
  * @package reportBuilder
  */
-class errorHandler
+class ErrorHandler
 {
     /**
      * Store the name of the app
@@ -18,19 +18,18 @@ class errorHandler
      * @desc  Set the appname
      * @param string $appName
      */
-    public static function setAppName($appName)
+    public function setAppName($appName)
     {
         $this->_appName = $appName;
     }
 
-
     /**
-     * @desc    log an error
+     * @desc    log an error to the syslog
      * @param   string $message
      * @param   boolean $error
      * @return  boolean
      */
-    public static function logError($message, $error = TRUE)
+    public function logError($message, $error = TRUE)
     {
         if (!isset($this->_appName))
         {
@@ -44,11 +43,19 @@ class errorHandler
     }
 
     /**
-     * @desc    log an info message
+     * Print the usage instructions
+     */
+    public function showUsage()
+    {
+        print "Usage: php -f report.php [merchant_id] OR [all]\n";
+    }
+
+    /**
+     * @desc    log an info message to the syslog
      * @param   string $message
      * @return  boolean
      */
-    public static function logInfo($message)
+    public function logInfo($message)
     {
         return $this->logError($message, 0);
     }

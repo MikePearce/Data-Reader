@@ -20,6 +20,15 @@ class Merchant extends BaseClass
     }
 
     /**
+     * @desc get the data file
+     * @return string
+     */
+    public function getDataFile()
+    {
+        return $this->_dataFile;
+    }
+
+    /**
      * @desc The job runner. When passed a merchant ID, it will grab
      *       all the data it needs and print to the screen
      */
@@ -67,7 +76,7 @@ class Merchant extends BaseClass
         $ret = FALSE;
         if ( 
                 $file_array = $this->_transTable->getDataFromFile(
-                    $this->_dataFile
+                    $this->getDataFile()
                 )
             )
         {
