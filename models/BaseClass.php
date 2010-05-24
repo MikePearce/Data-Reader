@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @desc Contains mostly injection handlers.
+ * @author Mike Pearce <mike@mikepearce.net>
+ * @package data-reader
+ * @since 23/05/10
+ */
 class BaseClass
 {
 

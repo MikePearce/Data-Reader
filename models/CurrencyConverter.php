@@ -1,8 +1,11 @@
 <?php
 
 /**
- * Uses CurrencyWebservice
- *
+ * @desc Uses CurrencyWebservice to get random float. It pretends this is an exchange
+ * rate. Crazy things happening with the encoding of the file.
+ * @author Mike Pearce <mike@mikepearce.net>
+ * @package data-reader
+ * @since 23/05/10
  */
 class CurrencyConverter
 {

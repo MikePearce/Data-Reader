@@ -3,7 +3,9 @@
 /**
  * Source of transactions, can read data.csv directly for simplicty sake, 
  * should behave like a database (read only)
- *
+ * @author Mike Pearce <mike@mikepearce.net>
+ * @package data-reader
+ * @since 23/05/10
  */
 class TransactionTable extends BaseClass
 {
