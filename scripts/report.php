@@ -10,7 +10,6 @@ function __autoload($class) {
     else {
         print $class .' does not exist';
     }
-    
 }
 
 $required = array(
