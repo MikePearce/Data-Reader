@@ -1,5 +1,5 @@
 <?php
-
+namespace Models\Currency;
 /**
  * Uses CurrencyWebservice
  *
@@ -46,7 +46,7 @@ class CurrencyConverter
      * @desc for injection
      * @param CurrencyWebservice $o
      */
-    public function setCurrencyWebService(CurrencyWebservice $o)
+    public function setCurrencyWebService(\Models\Currency\CurrencyWebservice $o)
     {
         $this->_currWebService = $o;
     }

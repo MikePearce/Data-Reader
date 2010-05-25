@@ -1,11 +1,11 @@
 <?php
-
+namespace Models\Core;
 /**
  * Source of transactions, can read data.csv directly for simplicty sake, 
  * should behave like a database (read only)
  *
  */
-class TransactionTable extends BaseClass
+class TransactionTable extends \Models\BaseClass
 {
 
     /**
@@ -25,7 +25,7 @@ class TransactionTable extends BaseClass
             //@todo Run a check to see if it's actually a CSV file.
             while ( ($row = fgetcsv($fh, 1000, ";")) )
             {
-                $o          = new stdClass;
+                $o          = new \stdClass;
                 $o->id      = $row[0];
                 $o->date    = $row[1];
                 $o->value   = $row[2];

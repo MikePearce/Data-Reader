@@ -1,5 +1,5 @@
 <?php
-
+namespace Models\Currency;
 /**
  * Dummy web service returning random exchange rates
  *

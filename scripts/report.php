@@ -1,36 +1,40 @@
 <?php
 
-// set the required include paths
-set_include_path(get_include_path() .
-        PATH_SEPARATOR . '/home/sites/datareader'
-);
-
-// @todo Create an autoloader
-// Note: The order is important (for injecting dependecies)
-include('models/BaseClass.php');
+function __autoload($class) {
+    // convert namespace to full file path
+    $class = str_replace('\\', '/', $class).'.php';
+    if (file_exists($class))
+    {
+        require_once($class);
+    }
+    else {
+        print $class .' does not exist';
+    }
+    
+}
 
 $required = array(
-    'ErrorHandler'      => FALSE,
-    'TransactionTable'  => TRUE,
-    'Merchant'          => TRUE,
-    'Display'           => FALSE,
-    'CurrencyConverter' => FALSE,
-    'CurrencyWebservice' => FALSE
+    'Models\BaseClass'                      => FALSE,
+    'Models\Error\ErrorHandler'             => FALSE,
+    'Models\Core\TransactionTable'          => TRUE,
+    'Models\Currency\CurrencyConverter'     => TRUE,
+    'Models\Currency\CurrencyWebservice'    => TRUE,
+    'Models\Display\Display'                => TRUE,
+    'Models\Core\Merchant'                  => TRUE,
 );
 
 // Grab each file
 foreach($required as $file => $inject)
 {
-
-    include_once('models/'.$file.'.php');
-    ${$file} = new $file;
+    $className = array_pop(explode("\\", $file));
+    ${$className} = new $file;
 
     // Inject some dependencis (if they exist)
     // @todo replace this suppression
     if($inject)
     {
-        ${$file}->ErrorHandler      = $ErrorHandler;
-        ${$file}->TransactionTable  = $TransactionTable;
+        ${$className}->ErrorHandler      = $ErrorHandler;
+        ${$className}->TransactionTable  = $TransactionTable;
     }
     
 }

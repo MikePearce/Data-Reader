@@ -1,6 +1,7 @@
 <?php
-
-class Merchant extends BaseClass
+namespace Models\Core;
+use \Models\Display\Display;
+class Merchant extends \Models\BaseClass
 {
 
     private $_dataFile;

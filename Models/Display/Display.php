@@ -1,4 +1,5 @@
 <?php
+namespace Models\Display;
 
 class display
 {
