@@ -8,7 +8,7 @@ namespace Models\Display;
  * @package data-reader
  * @since 23/05/10
  */
-class display
+class Display
 {
     private $_padSize;
 
@@ -27,6 +27,15 @@ class display
     public function setPadSize($size)
     {
         $this->_padSize = $size;
+    }
+
+    /**
+     * @desc return padsize
+     * @return int
+     */
+    public function getPadSize()
+    {
+        return $this->_padSize;
     }
 
     /**
