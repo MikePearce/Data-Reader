@@ -47,5 +47,5 @@ $Merchant->setCurrencyConverter($CurrencyConverter);
 $ErrorHandler->setAppName('reportBuilder');
 
 // Get an instance and print
-$Merchant->setDataFile('/home/sites/datareader/data.csv');
+$Merchant->setDataFile('/Users/mikepearce/sites/task/data.csv');
 $Merchant->printReport();

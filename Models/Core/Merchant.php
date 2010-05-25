@@ -1,11 +1,24 @@
 <?php
 namespace Models\Core;
 use \Models\Display\Display;
+/**
+ * @desc the meat of the application. Handles the runner
+ * @author Mike Pearce <mike@mikepearce.net>
+ * @package data-reader
+ * @since 23/05/10
+ */
+
 class Merchant extends \Models\BaseClass
 {
-
+    /**
+     * @desc The datafile is where the data is located. Could be expanded
+     * to be an sqlite file with little effort and some sniffing
+     */
     private $_dataFile;
 
+    /**
+     * @desc Just set some defaults
+     */
     public function __construct()
     {
         $this->_dataFile = NULL;
@@ -18,6 +31,15 @@ class Merchant extends \Models\BaseClass
     public function setDataFile($f)
     {
         $this->_dataFile = $f;
+    }
+
+    /**
+     * @desc get the data file
+     * @return string
+     */
+    public function getDataFile()
+    {
+        return $this->_dataFile;
     }
 
     /**
@@ -62,13 +84,15 @@ class Merchant extends \Models\BaseClass
 
     /**
      * @desc    Get all the transaction based on a given ID
+     * @param int $id
+     * @return mixed FALSE on error or an array
      */
     public function getTransactions($id)
     {
         $ret = FALSE;
         if ( 
                 $file_array = $this->_transTable->getDataFromFile(
-                    $this->_dataFile
+                    $this->getDataFile()
                 )
             )
         {

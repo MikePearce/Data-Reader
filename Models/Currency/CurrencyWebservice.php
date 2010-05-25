@@ -2,7 +2,9 @@
 namespace Models\Currency;
 /**
  * Dummy web service returning random exchange rates
- *
+ * @author Mike Pearce <mike@mikepearce.net>
+ * @package data-reader
+ * @since 23/05/10
  */
 class CurrencyWebservice
 {
