@@ -1,8 +1,10 @@
 <?php
 namespace Models\Core;
 
-require_once 'autoload.php';
+//require_once 'autoload.php';
 require_once 'PHPUnit/Framework.php';
+
+use Models\Error\ErrorHandler;
 
 /**
  * Test class for TransactionTable.
@@ -22,6 +24,9 @@ class TransactionTableTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->object = new TransactionTable;
+        $this->object->setErrorHandler(new ErrorHandler());
+
+
     }
 
     /**
@@ -31,7 +36,7 @@ class TransactionTableTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertTrue(
             is_array(
-                $this->object->getDataFromFile('/Users/mikepearce/Sites/task/data.csv')
+                $this->object->getDataFromFile('data.csv')
             )
         );
           

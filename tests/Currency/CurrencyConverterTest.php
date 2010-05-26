@@ -1,15 +1,15 @@
 <?php
 namespace Models\Currency;
 
-require_once 'autoload.php';
+//require_once 'autoload.php';
 require_once 'PHPUnit/Framework.php';
 
 
-class currencyWebService
+class currencyWebService extends \Models\Currency\abstractCurrency
 {
     public function getExchangeRate()
     {
-        return 1;
+        return 1.0;
     }
 }
 
@@ -31,7 +31,8 @@ class CurrencyConverterTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->object = new CurrencyConverter;
-        $this->object->setCurrencyWebService(new currencyWebService);
+        $cw = new currencyWebService();
+        $this->object->setCurrencyWebService($cw);
     }
 
     public function testConvert()

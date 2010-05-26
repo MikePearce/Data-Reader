@@ -1,7 +1,7 @@
 <?php
 namespace Models\Currency;
 
-require_once 'autoload.php';
+//require_once 'autoload.php';
 require_once 'PHPUnit/Framework.php';
 
 
@@ -32,7 +32,7 @@ class CurrencyWebserviceTest extends \PHPUnit_Framework_TestCase
     public function testGetExchangeRate()
     {
         $this->assertTrue(
-            !is_float($this->object->getExchangeRate('$')),
+            is_float($this->object->getExchangeRate('$')),
             'Actually returns: '. $this->object->getExchangeRate('$')
         );
     }

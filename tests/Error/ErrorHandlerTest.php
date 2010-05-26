@@ -1,7 +1,7 @@
 <?php
 namespace Models\Error;
 
-require_once 'autoload.php';
+//require_once 'autoload.php';
 require_once 'PHPUnit/Framework.php';
 
 

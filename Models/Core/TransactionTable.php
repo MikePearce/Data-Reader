@@ -7,7 +7,7 @@ namespace Models\Core;
  * @package data-reader
  * @since 23/05/10
  */
-class TransactionTable extends \Models\BaseClass
+class TransactionTable extends abstractCore
 {
 
     /**

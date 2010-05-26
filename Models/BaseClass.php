@@ -32,7 +32,7 @@ class BaseClass
      * @desc Set the transaction table
      * @param TransactionTable $o
      */
-    public function setTransactionTable(\Models\Core\TransactionTable $o)
+    public function setTransactionTable(\Models\Core\abstractCore $o)
     {
         $this->_transTable = $o;
     }
@@ -41,7 +41,7 @@ class BaseClass
      * @desc set the error handler
      * @param errorHandler $o
      */
-    public function setErrorHandler(\Models\Error\ErrorHandler $o)
+    public function setErrorHandler(\Models\Error\abstractError $o)
     {
         $this->_eHand = $o;
     }
@@ -50,7 +50,7 @@ class BaseClass
      * @desc Injector for currency converter
      * @param CurrencyConverter $o
      */
-    public function setCurrencyConverter(\Models\Currency\CurrencyConverter $o)
+    public function setCurrencyConverter(\Models\Currency\abstractCurrency $o)
     {
         $this->_converter = $o;
     }

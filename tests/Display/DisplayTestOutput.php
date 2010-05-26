@@ -1,7 +1,7 @@
 <?php
 namespace Models\Display;
 
-require_once 'autoload.php';
+//require_once 'autoload.php';
 require_once 'PHPUnit/Extensions/OutputTestCase.php';
 
 

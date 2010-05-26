@@ -1,7 +1,7 @@
 <?php
 namespace Models\Core;
 
-require_once 'autoload.php';
+//require_once '/home/sites/datareader/tests/bootstrap.php';
 require_once 'PHPUnit/Framework.php';
 
 use Models\Error\ErrorHandler;
@@ -27,12 +27,13 @@ class MerchantTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->object = new Merchant;
-        $this->object->setDataFile('/Users/mikepearce/Sites/task/data.csv');
+        $this->object->setDataFile('data.csv');
 
         $tt = new TransactionTable;
         $eh = new ErrorHandler;
         $cc = new CurrencyConverter;
         $cw = new CurrencyWebservice();
+
         $tt->setErrorHandler($eh);
         $this->object->setCurrencyConverter($cc);
         $cc->setCurrencyWebService($cw);

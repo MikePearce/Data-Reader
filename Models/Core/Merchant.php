@@ -8,7 +8,7 @@ use \Models\Display\Display;
  * @since 23/05/10
  */
 
-class Merchant extends \Models\BaseClass
+class Merchant extends \Models\Core\abstractCore
 {
     /**
      * @desc The datafile is where the data is located. Could be expanded

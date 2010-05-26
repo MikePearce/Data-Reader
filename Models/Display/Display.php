@@ -8,7 +8,7 @@ namespace Models\Display;
  * @package data-reader
  * @since 23/05/10
  */
-class Display
+class Display extends abstractDisplay
 {
     private $_padSize;
 

@@ -7,7 +7,7 @@ namespace Models\Currency;
  * @package data-reader
  * @since 23/05/10
  */
-class CurrencyConverter
+class CurrencyConverter extends abstractCurrency
 {
 
     private $_currWebService;

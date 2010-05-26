@@ -1,0 +1,37 @@
+<phpunit 
+         bootstrap          = "bootstrap.php"
+         colors             = "true"
+         processIsolation   = "true"
+         stopOnFailure      = "false"
+         syntaxCheck        = "true"
+>
+<testsuites>
+  <!-- Test all the \Models\Core stuff  -->
+  <testsuite name="Core">
+    <directory>/home/sites/datareader/tests/Core</directory>
+    <file>/home/sites/datareader/tests/Core/MerchantTest.php</file>
+  <!--  <file>/home/sites/datareader/tests/Core/TransactionTableTest.php</file> -->
+  </testsuite>
+
+  <!-- Test all the \Models\Currency stuff -->
+  <testsuite name="Currency">
+    <directory>/home/sites/datareader/tests/Currency</directory>
+    <file>/home/sites/datareader/tests/Currency/CurrencyConverterTest.php</file>
+    <file>/home/sites/datareader/tests/Currency/CurrencyWebserviceTest.php</file>
+  </testsuite>
+
+  <!-- Test all the \Models\Display stuff  -->
+  <testsuite name="Display">
+    <directory>/home/sites/datareader/tests/Display</directory>
+    <file>/home/sites/datareader/tests/Display/DisplayTest.php</file>
+    <file>/home/sites/datareader/tests/Display/DisplayTestOutput.php</file>
+  </testsuite>
+
+   <!-- Test all the \Models\Error stuff  -->
+  <testsuite name="Error">
+    <directory>/home/sites/datareader/tests/Error</directory>
+    <file>/home/sites/datareader/tests/Error/ErrorHandlerTest.php</file>
+  </testsuite>
+  
+</testsuites>
+</phpunit>

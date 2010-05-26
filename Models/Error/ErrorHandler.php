@@ -8,7 +8,7 @@ namespace Models\Error;
  * @author  Mike Pearce <mike@mikepearce.net>
  * @package reportBuilder
  */
-class ErrorHandler
+class ErrorHandler extends abstractError
 {
     /**
      * Store the name of the app
